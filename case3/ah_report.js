@@ -28,19 +28,24 @@
       
 */
 
+//code to apply the table for the amount of donations and how much money is donated
 var donationTotal = 0;
 donors.forEach(calcSum);
 var summaryTable = "<table><tr><th>Donors</th><td> " + donors.length + "</td></tr><tr><th>Total Donations</th><td>$" + donationTotal.toLocaleString() + "</td></tr></table>";
 document.getElementById("donationSummary").innerHTML = summaryTable;
 
+//code to apply a table for listing the major donors who donated more than $1000
 var majorDonors = donors.filter(findMajorDonors);
 majorDonors.sort(donorSortDescending);
 
+//includes information for everyone that is a major donor
 var donorTable = "<table><caption>Major Donors</caption><tr><th>Donation</th><th>Donor ID</th><th>Date</th><th>Name</th><th>Address</th><th>Phone</th><th>E-mail</th></tr>";
 majorDonors.forEach(writeDonorRow);
 
+//closes the table
 donorTable += "</table>";
 
+//applies the major donor table to the html page
 document.getElementById("donorTable").innerHTML = donorTable;
 
 function calcSum(donorAmt) {
